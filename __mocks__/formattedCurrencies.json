@@ -1,0 +1,222 @@
+{
+  "date": "2024-06-14",
+  "currencies": [
+    {
+      "currency": "USD",
+      "rate": 1.0686,
+      "currencyName": "United States Dollar",
+      "flag": "🇺🇸",
+      "currencySymbol": "$"
+    },
+    {
+      "currency": "JPY",
+      "rate": 167.8,
+      "currencyName": "Yen",
+      "flag": "🇯🇵",
+      "currencySymbol": "¥"
+    },
+    {
+      "currency": "BGN",
+      "rate": 1.9558,
+      "currencyName": "Bulgarian Lev",
+      "flag": "🇧🇬",
+      "currencySymbol": "лв"
+    },
+    {
+      "currency": "CZK",
+      "rate": 24.736,
+      "currencyName": "Czech Koruna",
+      "flag": "🇨🇿",
+      "currencySymbol": "Kč"
+    },
+    {
+      "currency": "DKK",
+      "rate": 7.4605,
+      "currencyName": "Danish Krone",
+      "flag": "🇩🇰",
+      "currencySymbol": "kr"
+    },
+    {
+      "currency": "GBP",
+      "rate": 0.84205,
+      "currencyName": "Pound Sterling",
+      "flag": "🇬🇧",
+      "currencySymbol": "£"
+    },
+    {
+      "currency": "HUF",
+      "rate": 398,
+      "currencyName": "Forint",
+      "flag": "🇭🇺",
+      "currencySymbol": "Ft"
+    },
+    {
+      "currency": "PLN",
+      "rate": 4.3733,
+      "currencyName": "Zloty",
+      "flag": "🇵🇱",
+      "currencySymbol": "zł"
+    },
+    {
+      "currency": "RON",
+      "rate": 4.9773,
+      "currencyName": "Romanian Leu",
+      "flag": "🇷🇴",
+      "currencySymbol": "lei"
+    },
+    {
+      "currency": "SEK",
+      "rate": 11.2731,
+      "currencyName": "Swedish Krona",
+      "flag": "🇸🇪",
+      "currencySymbol": "kr"
+    },
+    {
+      "currency": "CHF",
+      "rate": 0.9534,
+      "currencyName": "Swiss Franc",
+      "flag": "🇨🇭",
+      "currencySymbol": "CHF"
+    },
+    {
+      "currency": "ISK",
+      "rate": 149.1,
+      "currencyName": "Iceland Krona",
+      "flag": "🇮🇸",
+      "currencySymbol": "kr"
+    },
+    {
+      "currency": "NOK",
+      "rate": 11.4025,
+      "currencyName": "Norwegian Krone",
+      "flag": "🇳🇴",
+      "currencySymbol": "kr"
+    },
+    {
+      "currency": "TRY",
+      "rate": 34.8826,
+      "currencyName": "Turkish Lira",
+      "flag": "🇹🇷",
+      "currencySymbol": "₺"
+    },
+    {
+      "currency": "AUD",
+      "rate": 1.6156,
+      "currencyName": "Australian Dollar",
+      "flag": "🇦🇺",
+      "currencySymbol": "$"
+    },
+    {
+      "currency": "BRL",
+      "rate": 5.7321,
+      "currencyName": "Brazilian Real",
+      "flag": "🇧🇷",
+      "currencySymbol": "R$"
+    },
+    {
+      "currency": "CAD",
+      "rate": 1.4704,
+      "currencyName": "Canadian Dollar",
+      "flag": "🇨🇦",
+      "currencySymbol": "$"
+    },
+    {
+      "currency": "CNY",
+      "rate": 7.7529,
+      "currencyName": "Yuan Renminbi",
+      "flag": "🇨🇳",
+      "currencySymbol": "¥"
+    },
+    {
+      "currency": "HKD",
+      "rate": 8.347,
+      "currencyName": "Hong Kong Dollar",
+      "flag": "🇭🇰",
+      "currencySymbol": "$"
+    },
+    {
+      "currency": "IDR",
+      "rate": 17617.21,
+      "currencyName": "Rupiah",
+      "flag": "🇮🇩",
+      "currencySymbol": "Rp"
+    },
+    {
+      "currency": "ILS",
+      "rate": 3.9848,
+      "currencyName": "New Israeli Sheqel",
+      "flag": "🇮🇱",
+      "currencySymbol": "₪"
+    },
+    {
+      "currency": "INR",
+      "rate": 89.266,
+      "currencyName": "Indian Rupee",
+      "flag": "🇮🇳",
+      "currencySymbol": "₹"
+    },
+    {
+      "currency": "KRW",
+      "rate": 1480.8,
+      "currencyName": "Won",
+      "flag": "🇰🇷",
+      "currencySymbol": "₩"
+    },
+    {
+      "currency": "MXN",
+      "rate": 19.8471,
+      "currencyName": "Mexican Peso",
+      "flag": "🇲🇽",
+      "currencySymbol": "$"
+    },
+    {
+      "currency": "MYR",
+      "rate": 5.0433,
+      "currencyName": "Malaysian Ringgit",
+      "flag": "🇲🇾",
+      "currencySymbol": "RM"
+    },
+    {
+      "currency": "NZD",
+      "rate": 1.7418,
+      "currencyName": "New Zealand Dollar",
+      "flag": "🇳🇿",
+      "currencySymbol": "$"
+    },
+    {
+      "currency": "PHP",
+      "rate": 62.677,
+      "currencyName": "Philippine Peso",
+      "flag": "🇵🇭",
+      "currencySymbol": "₱"
+    },
+    {
+      "currency": "SGD",
+      "rate": 1.4464,
+      "currencyName": "Singapore Dollar",
+      "flag": "🇸🇬",
+      "currencySymbol": "$"
+    },
+    {
+      "currency": "THB",
+      "rate": 39.228,
+      "currencyName": "Baht",
+      "flag": "🇹🇭",
+      "currencySymbol": "฿"
+    },
+    {
+      "currency": "ZAR",
+      "rate": 19.6019,
+      "currencyName": "Rand",
+      "flag": "🇿🇦",
+      "currencySymbol": "R"
+    }
+  ],
+  "baseCurrency": {
+    "currency": "EUR",
+    "rate": 1,
+    "flag": "🇪🇺",
+    "currencyName": "Euro",
+    "currencySymbol": "€"
+  }
+}
