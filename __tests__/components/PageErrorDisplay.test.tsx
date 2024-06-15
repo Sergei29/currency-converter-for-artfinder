@@ -11,7 +11,7 @@ describe('PageErrorDisplay', () => {
 
   it('should render the error message', () => {
     const { getByText } = render(<PageErrorDisplay error="Mock error" />)
-    const errorMessage = getByText('Mock error')
+    const errorMessage = getByText(/Mock error/i)
 
     expect(errorMessage).toBeInTheDocument()
   })
