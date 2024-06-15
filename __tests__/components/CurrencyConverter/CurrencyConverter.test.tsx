@@ -34,4 +34,24 @@ describe('CurrencyConverter', () => {
 
     expect(baseElement).toBeInTheDocument()
   })
+
+  it('should render 2 select and 2 input elements', () => {
+    const { getByLabelText } = render(<CurrencyConverter {...mockProps} />)
+    const selectCurrency = getByLabelText(/1 DKK = 0.1340 EUR/i)
+    const selectbaseCurrency = getByLabelText(/1 EUR = 7.460 DKK/i)
+    const inputLeft = getByLabelText('kr')
+    const inputRight = getByLabelText('€')
+
+    expect(selectCurrency).toBeInTheDocument()
+    expect(selectbaseCurrency).toBeInTheDocument()
+    expect(inputLeft).toBeInTheDocument()
+    expect(inputRight).toBeInTheDocument()
+  })
+
+  it('should render with the first currency selected', () => {
+    const { getByLabelText } = render(<CurrencyConverter {...mockProps} />)
+    const selectCurrency = getByLabelText(/1 DKK = 0.1340 EUR/i)
+
+    expect(selectCurrency).toHaveTextContent(/Danish Krone/i)
+  })
 })
