@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ChangeEvent } from 'react'
 import { Repeat } from 'lucide-react'
 
 import type { CurrencySummary } from '@/types'
@@ -16,6 +16,39 @@ import {
 } from '@/components/ui/select'
 import { Label } from '@/components/ui/label'
 import CurrencyInput from '@/components/CurrencyInput'
+import { calculateCurrencyRate } from './utils'
+
+export const useCurrencyInputs = (selectedCurrency: CurrencySummary) => {
+  const [currencyValue, setCurrencyValue] = useState<string>('')
+  const [baseCurrencyValue, setBaseCurrencyValue] = useState<string>('')
+
+  const handleChangeCurrency = (event: ChangeEvent<HTMLInputElement>) => {
+    const { base: newBaseValue } = calculateCurrencyRate(
+      +event.target.value,
+      selectedCurrency.rate,
+    )
+
+    setCurrencyValue(event.target.value)
+    setBaseCurrencyValue(newBaseValue)
+  }
+
+  const handleChangeBaseCurrency = (event: ChangeEvent<HTMLInputElement>) => {
+    const { current: newCurrentValue } = calculateCurrencyRate(
+      +event.target.value,
+      selectedCurrency.rate,
+    )
+
+    setBaseCurrencyValue(event.target.value)
+    setCurrencyValue(newCurrentValue)
+  }
+
+  return {
+    currencyValue,
+    baseCurrencyValue,
+    handleChangeCurrency,
+    handleChangeBaseCurrency,
+  }
+}
 
 interface Props {
   rates: CurrencySummary[]
@@ -24,6 +57,24 @@ interface Props {
 
 const CurrencyConverter = ({ rates, baseCurrency }: Props): JSX.Element => {
   const [selectedCurrency, setSelectedCurrency] = useState(() => rates[0])
+  const {
+    currencyValue,
+    baseCurrencyValue,
+    handleChangeCurrency,
+    handleChangeBaseCurrency,
+  } = useCurrencyInputs(selectedCurrency)
+
+  const currencyPerUnit = calculateCurrencyRate(1, selectedCurrency.rate)
+
+  const handleSelect = (currencyId: string) => {
+    const currencyFound = rates.find(
+      (current) => current.currency === currencyId,
+    )
+
+    if (currencyFound) {
+      setSelectedCurrency(currencyFound)
+    }
+  }
 
   return (
     <div
@@ -32,14 +83,12 @@ const CurrencyConverter = ({ rates, baseCurrency }: Props): JSX.Element => {
     >
       <div>
         <Label htmlFor="selectedCurrency" className="text-xs">
-          {`1 ${selectedCurrency.currency} = ${'unknown'} ${baseCurrency.currency}`}
+          {`1 ${selectedCurrency.currency} = ${currencyPerUnit.base} ${baseCurrency.currency}`}
         </Label>
         <Select
           defaultValue={selectedCurrency.currency}
           aria-describedby="currencySelect"
-          onValueChange={(value) => {
-            console.log('selected: ', value)
-          }}
+          onValueChange={handleSelect}
         >
           <SelectTrigger id="selectedCurrency" className="w-full">
             <SelectValue placeholder="Currency" />
@@ -66,6 +115,8 @@ const CurrencyConverter = ({ rates, baseCurrency }: Props): JSX.Element => {
         <CurrencyInput
           id="selectedCurrencyValue"
           label={selectedCurrency.currencySymbol}
+          value={currencyValue}
+          onChange={handleChangeCurrency}
         />
       </div>
 
@@ -75,7 +126,7 @@ const CurrencyConverter = ({ rates, baseCurrency }: Props): JSX.Element => {
 
       <div>
         <Label htmlFor="baseCurrency" className="text-xs">
-          {`1 ${baseCurrency.currency} = ${'unknown'} ${selectedCurrency.currency}`}
+          {`1 ${baseCurrency.currency} = ${currencyPerUnit.current} ${selectedCurrency.currency}`}
         </Label>
         <Select
           defaultValue={baseCurrency.currency}
@@ -110,6 +161,8 @@ const CurrencyConverter = ({ rates, baseCurrency }: Props): JSX.Element => {
         <CurrencyInput
           id="baseCurrencyValue"
           label={baseCurrency.currencySymbol}
+          value={baseCurrencyValue}
+          onChange={handleChangeBaseCurrency}
         />
       </div>
     </div>
