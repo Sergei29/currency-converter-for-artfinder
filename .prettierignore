@@ -1,0 +1,12 @@
+.next
+next-env.d.ts
+node_modules
+package-lock.json
+package.json
+public
+.vscode
+.env
+.eslintrc.json
+next.config.js
+postcss.config.js
+README.md
