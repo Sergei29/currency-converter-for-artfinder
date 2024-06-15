@@ -1,7 +1,6 @@
 .next
 next-env.d.ts
 node_modules
-yarn.lock
 package-lock.json
 package.json
 public
@@ -11,5 +10,3 @@ public
 next.config.js
 postcss.config.js
 README.md
-tailwind.config.js
-tsconfig.json
