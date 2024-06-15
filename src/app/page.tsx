@@ -11,7 +11,12 @@ const HomePage = async () => {
     <>
       <h1 className="text-3xl font-bold">Currency Converter</h1>
       {fetchError && <PageErrorDisplay error={fetchError} />}
-      {forexData && <CurrencyConverter />}
+      {forexData && (
+        <CurrencyConverter
+          rates={forexData.currencies}
+          baseCurrency={forexData.baseCurrency}
+        />
+      )}
     </>
   )
 }
