@@ -1,49 +1,116 @@
-import React from 'react'
+'use client'
+
+import { useState } from 'react'
+import { Repeat } from 'lucide-react'
+
+import type { CurrencySummary } from '@/types'
+
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectGroup,
+  SelectLabel,
 } from '@/components/ui/select'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import CurrencyInput from '@/components/CurrencyInput'
 
-interface Props {}
+interface Props {
+  rates: CurrencySummary[]
+  baseCurrency: CurrencySummary
+}
 
-const CurrencyConverter = ({}: Props): JSX.Element => {
+const CurrencyConverter = ({ rates, baseCurrency }: Props): JSX.Element => {
+  const [selectedCurrency, setSelectedCurrency] = useState(() => rates[0])
+
   return (
-    <div data-testid="CurrencyConverter">
-      <Select>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Theme" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="light">Light</SelectItem>
-          <SelectItem value="dark">Dark</SelectItem>
-          <SelectItem value="system">System</SelectItem>
-        </SelectContent>
-      </Select>
+    <div
+      data-testid="CurrencyConverter"
+      className="grid grid-cols-1 md:grid-cols-[1fr_50px_1fr] mt-4 md:mt-8"
+    >
+      <div>
+        <Label htmlFor="selectedCurrency" className="text-xs">
+          {`1 ${selectedCurrency.currency} = ${'unknown'} ${baseCurrency.currency}`}
+        </Label>
+        <Select
+          defaultValue={selectedCurrency.currency}
+          aria-describedby="currencySelect"
+          onValueChange={(value) => {
+            console.log('selected: ', value)
+          }}
+        >
+          <SelectTrigger id="selectedCurrency" className="w-full">
+            <SelectValue placeholder="Currency" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel className="sr-only">Currencies</SelectLabel>
+              {rates.map(({ currency, currencyName, flag }) => (
+                <SelectItem key={currency} value={currency}>
+                  <span className="flex gap-2">
+                    <span>{flag}</span>
+                    <span>{currencyName}</span>
+                  </span>
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+
+        <span id="currencySelect" className="sr-only">
+          Here you can select a currency to convert
+        </span>
+
+        <CurrencyInput
+          id="selectedCurrencyValue"
+          label={selectedCurrency.currencySymbol}
+        />
+      </div>
+
+      <div className="flex justify-center items-center">
+        <Repeat className="text-green-600 my-4 rotate-90 md:rotate-0" />
+      </div>
 
       <div>
-        <Label
-          htmlFor="selectedCurrencyValue"
-          className="flex justify-center items-center text-neutral-500 font-semibold text-2xl"
-        >
-          $
+        <Label htmlFor="baseCurrency" className="text-xs">
+          {`1 ${baseCurrency.currency} = ${'unknown'} ${selectedCurrency.currency}`}
         </Label>
-        <Input
-          id="selectedCurrencyValue"
-          type="number"
-          step={0.01}
-          className="h-full text-2xl"
-          placeholder="Enter your value"
-          aria-describedby="currencyInput"
-        />
-        <span id="currencyInput" className="sr-only">
-          Here you can enter an amount to convert, use comma if need to enter
-          decimals
+        <Select
+          defaultValue={baseCurrency.currency}
+          aria-describedby="baseCurrencySelect"
+        >
+          <SelectTrigger
+            id="baseCurrency"
+            className="w-full"
+            disabled
+            aria-disabled
+          >
+            <SelectValue placeholder="Currency" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel className="sr-only">Currencies</SelectLabel>
+              <SelectItem value={baseCurrency.currency}>
+                <span className="flex gap-2">
+                  <span>{baseCurrency.flag}</span>
+                  <span>{baseCurrency.currencyName}</span>
+                </span>
+              </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+
+        <span id="baseCurrencySelect" className="sr-only">
+          The only base currency available is set to EUR, this select is
+          currently disabled
         </span>
+
+        <CurrencyInput
+          id="baseCurrencyValue"
+          label={baseCurrency.currencySymbol}
+        />
       </div>
     </div>
   )

@@ -19,7 +19,9 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="max-w-screen-md mx-auto mt-12">{children}</main>
+        <main className="max-w-screen-md mx-2 md:mx-auto mt-12">
+          {children}
+        </main>
       </body>
     </html>
   )
