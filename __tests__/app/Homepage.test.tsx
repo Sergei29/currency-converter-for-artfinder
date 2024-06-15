@@ -4,9 +4,9 @@ import Homepage from '@/app/page'
 import * as utils from '@/lib/fetchCurrency'
 import formattedCurrencies from '../../__mocks__/formattedCurrencies.json'
 
-const fetchCurrencySpy = vi.spyOn(utils, 'fetchCurrency')
-
 describe('Homepage as a server component', () => {
+  const fetchCurrencySpy = vi.spyOn(utils, 'fetchCurrency')
+
   beforeEach(() => {
     fetchCurrencySpy.mockResolvedValue([formattedCurrencies, null])
   })

@@ -2,13 +2,12 @@
 
 import PageErrorDisplay from '@/components/PageErrorDisplay'
 
-const ErrorPage = ({
-  error,
-  reset,
-}: {
+interface Props {
   error: Error & { digest?: string }
   reset: () => void
-}) => {
+}
+
+const ErrorPage = ({ error, reset }: Props) => {
   return (
     <>
       <PageErrorDisplay error={error.message} />

@@ -3,15 +3,16 @@ import formattedCurrencies from '../../__mocks__/formattedCurrencies.json'
 
 import { fetchCurrency, EURO_FOREX_API_URL } from '@/lib/fetchCurrency'
 
-const mockFetch = vi.fn()
-global.fetch = mockFetch
-const options = {
-  headers: {
-    'Content-Type': 'text/xml',
-  },
-}
-
 describe('fetchCurrency util', () => {
+  const mockFetch = vi.fn()
+  global.fetch = mockFetch
+
+  const options = {
+    headers: {
+      'Content-Type': 'text/xml',
+    },
+  }
+
   beforeEach(() => {
     mockFetch.mockResolvedValue(getEuroExchangeMock())
   })
