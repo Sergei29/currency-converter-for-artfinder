@@ -79,6 +79,11 @@ InputEUR: 1/1.07 = 0.93457
 - breakpoints: xs, sm, md, lg, 2lg, will use default tailwind theme breakpoints
 - accessibility: i have page, heading, 2 selects, 2 inputs, i will see with https://developer.mozilla.org/en-US/docs/Web/Accessibility, https://www.a11yproject.com/checklist, https://a11y-101.com/development
 
+## DEPLOYED VERSION
+
+can be viewed at: https://currency-converter-for-artfinder.vercel.app/
+
+
 ## NEXT.JS BOLERPLATE DOCS BELOW
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
