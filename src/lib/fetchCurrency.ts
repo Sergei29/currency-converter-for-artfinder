@@ -8,11 +8,10 @@ export const EURO_FOREX_API_URL =
 export const convertToJson = (data: string) =>
   JSON.parse(convert.xml2json(data, { compact: true, spaces: 2 }))
 
-const decodeHtmlCharCodes = (str: string) => {
-  return str.replace(/(&#(\d+);)/g, function (match, capture, charCode) {
-    return String.fromCharCode(charCode)
-  })
-}
+const decodeHtmlCharCodes = (str: string) =>
+  str.replace(/(&#(\d+);)/g, (match, capture, charCode) =>
+    String.fromCharCode(charCode),
+  )
 
 const currencyDetails: Record<
   string,

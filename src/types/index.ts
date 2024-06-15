@@ -7,55 +7,39 @@ export interface CurrencySummary {
 }
 
 export interface ApiPayloadCurrencyRates {
-  _declaration: Declaration
+  _declaration: {
+    _attributes: {
+      version: string
+      encoding: string
+    }
+  }
   'gesmes:Envelope': GesmesEnvelope
 }
 
-export interface Declaration {
-  _attributes: DeclarationAttributes
-}
-
-export interface DeclarationAttributes {
-  version: string
-  encoding: string
-}
-
 export interface GesmesEnvelope {
-  _attributes: GesmesEnvelopeAttributes
+  _attributes: {
+    'xmlns:gesmes': string
+    xmlns: string
+  }
   'gesmes:subject': Gesmes
-  'gesmes:Sender': GesmesSender
-  Cube: GesmesEnvelopeCube
-}
-
-export interface GesmesEnvelopeCube {
-  Cube: PurpleCube
-}
-
-export interface PurpleCube {
-  _attributes: FluffyAttributes
-  Cube: CubeElement[]
+  'gesmes:Sender': {
+    'gesmes:name': Gesmes
+  }
+  Cube: {
+    Cube: {
+      _attributes: {
+        time: string // as Date YYYY-MM-DD
+      }
+      Cube: CubeElement[]
+    }
+  }
 }
 
 export interface CubeElement {
-  _attributes: PurpleAttributes
-}
-
-export interface PurpleAttributes {
-  currency: string
-  rate: string
-}
-
-export interface FluffyAttributes {
-  time: string // as Date YYYY-MM-DD
-}
-
-export interface GesmesEnvelopeAttributes {
-  'xmlns:gesmes': string
-  xmlns: string
-}
-
-export interface GesmesSender {
-  'gesmes:name': Gesmes
+  _attributes: {
+    currency: string
+    rate: string
+  }
 }
 
 export interface Gesmes {
