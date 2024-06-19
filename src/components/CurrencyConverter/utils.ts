@@ -11,7 +11,7 @@ const isInteger = (num: number) => Math.floor(num) === num
  */
 export const calculateCurrencyRate = (amount: number, rate: number) => {
   if (amount === 0) {
-    return { base: '0', current: '0' }
+    return { base: '', current: '' }
   }
 
   const newCurrency = amount * rate
