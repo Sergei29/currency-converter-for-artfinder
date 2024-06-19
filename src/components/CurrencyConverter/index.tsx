@@ -86,8 +86,8 @@ const CurrencyConverter = ({ rates, baseCurrency }: Props): JSX.Element => {
           {`1 ${selectedCurrency.currency} = ${currencyPerUnit.base} ${baseCurrency.currency}`}
         </Label>
         <Select
-          defaultValue={selectedCurrency.currency}
           aria-describedby="currencySelect"
+          value={selectedCurrency.currency}
           onValueChange={handleSelect}
         >
           <SelectTrigger id="selectedCurrency" className="w-full">
